@@ -89,9 +89,9 @@ TODO: Add version numbers after working model.
 
 1. Converting downloaded data (T2 fold) to `nii` files in 3D for the ease of reading
 
-run `./data/CHAOST2/dcm_img_to_nii.sh` to convert dicom images to nifti files.
+run `./data/CHAOST2/dcm_img_to_nii.sh` to convert dicom images to nifti files. [MGM: Updated `dcm2nii` comand to `dcm2niix`. Need to create `niis` directory. Need to run this within `./data/CHAOST2/`.]
 
-run `./data/CHAOST2/png_gth_to_nii.ipynp` to convert ground truth with `png` format to nifti.
+run `./data/CHAOST2/png_gth_to_nii.ipynb` to convert ground truth with `png` format to nifti.
 
 2. Pre-processing downloaded images
 

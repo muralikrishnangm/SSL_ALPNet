@@ -40,6 +40,40 @@ torch==1.3.0
 torchvision==0.4.1
 ```
 
+#### 1.1 MGM's notes: OLCF Frontier
+These are old versions and PyTorch needs ROCM version. Follow these steps for installing the dependencies:
+
+1. Create custom python env:
+```
+  source $PROJWORK/stf006/muraligm/software/miniconda3-frontier/bin/activate
+  conda create --prefix=SSL_ALPNet_frontier39 python=3.9 anaconda
+  conda activate /lustre/orion/stf006/proj-shared/muraligm/ML/SSL_ALPNet/SSL_ALPNet_frontier39
+```
+
+2. Install ROCM version of PyTorch (can try latest version from PyTorch's website):
+`pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.4.2`
+
+3. Install `dcm2nixx`:
+`conda install -c conda-forge dcm2niix`
+
+4. Install rest of the dependencies in the edited [`requirements.txt`](requirements.txt) file:
+`pip install -r requirements.txt`
+The `requirements.txt` file is edited to:
+```
+json5
+jupyter
+nibabel
+numpy
+opencv-python
+Pillow
+sacred
+scikit-image
+SimpleITK
+tqdm
+```
+TODO: Add version numbers after working model.
+
+
 ### 2. Data pre-processing 
 
 **Abdominal MRI**

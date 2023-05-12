@@ -21,7 +21,7 @@ EXCLU='[2,3]' # setting 2: excluding kidneies in training set to test generaliza
 # EXCLU='[1,4]' 
 
 ###### Training configs ######
-NSTEP=100100
+NSTEP=2001
 DECAY=0.95
 
 MAX_ITER=1000 # defines the size of an epoch
@@ -39,7 +39,7 @@ do
     do
     PREFIX="train_${DATASET}_lbgroup${LABEL_SETS}_scale_${SUPERPIX_SCALE}_vfold${EVAL_FOLD}"
     echo $PREFIX
-    LOGDIR="./exps/${CPT}_${SUPERPIX_SCALE}_${LABEL_SETS}"
+    LOGDIR="./examples/${CPT}_${SUPERPIX_SCALE}_${LABEL_SETS}"
 
     if [ ! -d $LOGDIR ]
     then

@@ -128,7 +128,7 @@ run `./data/SABS/resampling_and_roi.ipynb`
 
 3. Build class-slice indexing for setting up experiments
 
-run `./data/<CHAOST2/SABS>class_slice_index_gen.ipynb`
+run `./data/<CHAOST2/SABS>/class_slice_index_gen.ipynb`
 
 `
 You are highly welcomed to use this pre-processing pipeline in your own work for evaluating few-shot medical image segmentation in future. Please consider citing our paper (as well as the original sources of data) if you find this pipeline useful. Thanks! 
@@ -136,7 +136,7 @@ You are highly welcomed to use this pre-processing pipeline in your own work for
 
 ### 3. Pseudolabel generation
 
-run `./data_preprocessing/pseudolabel_gen.ipynb`. You might need to specify which dataset to use within the notebook.
+run `./data/pseudolabel_gen.ipynb`. You might need to specify which dataset to use within the notebook.
 
 ### 4. Running training and evaluation
 

@@ -51,7 +51,15 @@ These are old versions and PyTorch needs ROCM version. Follow these steps for in
   conda activate /lustre/orion/stf006/proj-shared/muraligm/ML/SSL_ALPNet/SSL_ALPNet_frontier39
 ```
 
-2. Install ROCM version of PyTorch (can try latest version from PyTorch's website):
+1. Load required modules:
+```
+  module load cray-python
+  module load PrgEnv-gnu 
+  module load amd-mixed/5.4.3 
+  module load craype-accel-amd-gfx90a
+```
+
+3. Install ROCM version of PyTorch (can try latest version from PyTorch's website):
 
 `pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.4.2`
 

@@ -187,6 +187,54 @@ You are highly welcomed to use this pre-processing pipeline in your own work for
 
     `./examples/train_ssl_abdominal_mri.sh `
 
+Sample output for training script:
+```
+  ===================================
+  train_CHAOST2_Superpix_lbgroup0_scale_MIDDLE_vfold0
+  WARNING - root - Changed type of config entry "min_fg_data" from str to int
+  INFO - mySSL - Running command 'main'
+  INFO - mySSL - Started run with ID "12"
+  INFO - main - ###### Create model ######
+  ###### NETWORK: Using ms-coco initialization ######
+  INFO - main - ###### Load data ######
+  INFO - main - ###### Labels excluded in training : [2, 3] ######
+  INFO - main - ###### Unseen labels evaluated in testing: [2, 3] ######
+  ###### Dataset: the following classes has been excluded [2, 3]######
+  ###### Initial scans loaded: ######
+  ['10', '21', '31']
+  INFO - main - ###### Set optimizer ######
+  INFO - main - ###### Training ######
+  INFO - main - ###### This is epoch 0 of 2 epoches ######
+  step 100: loss: 0.22587881325316744, align_loss: 0.15672334357973675,
+  step 200: loss: 0.16230791803993186, align_loss: 0.11411493995897747,
+  step 300: loss: 0.12763067757376098, align_loss: 0.10042600139931786,
+  step 400: loss: 0.11708095966192614, align_loss: 0.08452153052648818,
+  step 500: loss: 0.11077841559008526, align_loss: 0.08593828991521103,
+  step 600: loss: 0.11657362099724226, align_loss: 0.08223104320612029,
+  step 700: loss: 0.12269221273678145, align_loss: 0.08606690370792375,
+  step 800: loss: 0.10588769452328119, align_loss: 0.08393611246428843,
+  step 900: loss: 0.11033230920513275, align_loss: 0.07945185962676982,
+  step 1000: loss: 0.12249267986553627, align_loss: 0.09175384939366267,
+  INFO - main - ###### Reloading dataset ######
+  We are not using the reload buffer, doing notiong
+  ###### New dataset with 1000 slices has been loaded ######
+  INFO - main - ###### This is epoch 1 of 2 epoches ######
+  step 1100: loss: 0.09567949676373319, align_loss: 0.08054770589367742,
+  step 1200: loss: 0.13734420659007834, align_loss: 0.08431105746339952,
+  step 1300: loss: 0.10726467436878025, align_loss: 0.07725068393108714,
+  step 1400: loss: 0.10956608559936278, align_loss: 0.07535256572418794,
+  step 1500: loss: 0.08694624278041423, align_loss: 0.0764432155674692,
+  step 1600: loss: 0.09315862934014157, align_loss: 0.07419406701323113,
+  step 1700: loss: 0.09653770390386913, align_loss: 0.07118753027515627,
+  step 1800: loss: 0.09548619702220015, align_loss: 0.07374479509531366,
+  step 1900: loss: 0.09628292935562124, align_loss: 0.07624358614591649,
+  step 2000: loss: 0.09868220896327305, align_loss: 0.07253659013755129,
+  INFO - main - ###### Reloading dataset ######
+  We are not using the reload buffer, doing notiong
+  ###### New dataset with 1000 slices has been loaded ######
+  INFO - mySSL - Completed after 0:04:02
+```
+
 ### Acknowledgement
 
 This code is based on vanilla [PANet](https://github.com/kaixin96/PANet) (ICCV'19) by [Kaixin Wang](https://github.com/kaixin96) et al. The data augmentation tools are from Dr. [Jo Schlemper](https://github.com/js3611). Should you have any further questions, please let us know. Thanks again for your interest.

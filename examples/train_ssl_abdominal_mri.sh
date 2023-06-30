@@ -21,7 +21,7 @@ EXCLU='[2,3]' # setting 2: excluding kidneies in training set to test generaliza
 # EXCLU='[1,4]' 
 
 ###### Training configs ######
-NSTEP=2001
+NSTEP=100100
 DECAY=0.95
 
 MAX_ITER=1000 # defines the size of an epoch
@@ -70,3 +70,7 @@ do
     support_idx=$SUPP_ID
     done
 done
+
+echo ===================================
+
+

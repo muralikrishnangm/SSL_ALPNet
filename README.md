@@ -88,6 +88,11 @@ tqdm
 
 TODO: Add version numbers after working model.
 
+5. Additional installs:
+```
+  pip install matplotlib
+```
+
 
 ### 2. Data pre-processing 
 

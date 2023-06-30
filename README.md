@@ -47,7 +47,7 @@ These are old versions and PyTorch needs ROCM version. Follow these steps for in
 
 ```
   source $PROJWORK/stf006/muraligm/software/miniconda3-frontier/bin/activate
-  conda create --prefix=SSL_ALPNet_frontier39 python=3.9 anaconda
+  conda create --prefix=SSL_ALPNet_frontier39 python=3.9
   conda activate /lustre/orion/stf006/proj-shared/muraligm/ML/SSL_ALPNet/SSL_ALPNet_frontier39
 ```
 

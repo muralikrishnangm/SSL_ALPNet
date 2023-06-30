@@ -43,20 +43,20 @@ torchvision==0.4.1
 #### 1.1 MGM's notes: OLCF Frontier
 These are old versions and PyTorch needs ROCM version. Follow these steps for installing the dependencies:
 
-1. Create custom python env:
-
-```
-  source $PROJWORK/stf006/muraligm/software/miniconda3-frontier/bin/activate
-  conda create --prefix=SSL_ALPNet_frontier39 python=3.9
-  conda activate /lustre/orion/stf006/proj-shared/muraligm/ML/SSL_ALPNet/SSL_ALPNet_frontier39
-```
-
 1. Load required modules:
 ```
   module load cray-python
   module load PrgEnv-gnu 
   module load amd-mixed/5.4.3 
   module load craype-accel-amd-gfx90a
+```
+
+1. Create custom python env:
+
+```
+  source $PROJWORK/stf006/muraligm/software/miniconda3-frontier/bin/activate
+  conda create --prefix=SSL_ALPNet_frontier39 python=3.9
+  conda activate /lustre/orion/stf006/proj-shared/muraligm/ML/SSL_ALPNet/SSL_ALPNet_frontier39
 ```
 
 3. Install ROCM version of PyTorch (can try latest version from PyTorch's website):
@@ -156,7 +156,36 @@ You are highly welcomed to use this pre-processing pipeline in your own work for
 * run `./examples/train_ssl_abdominal_<mri/ct>.sh` and `./examples/test_ssl_abdominal_<mri/ct>.sh`
   * *MGM Notes:*
     * Run this on root dir, not `examples` dir.
-    * 
+* Running on OLCF Frontier batch nodes:
+  * As an interactive job:
+    * Get an interactive job node:
+    
+    `salloc -A ABC123 -J RunSim123 -t 1:00:00 -p batch -q debug -N 1`
+
+    * Load necessary modules:
+   
+    ```
+      export MIOPEN_USER_DB_PATH="/tmp/my-miopen-cache"
+      export MIOPEN_CUSTOM_CACHE_DIR=${MIOPEN_USER_DB_PATH}
+      rm -rf ${MIOPEN_USER_DB_PATH}
+      mkdir -p ${MIOPEN_USER_DB_PATH}
+      
+      module load cray-python
+      module load PrgEnv-gnu 
+      module load amd-mixed/5.4.3 
+      module load craype-accel-amd-gfx90a
+    ```
+
+    * Load custom python env:
+   
+    ```
+      source $PROJWORK/stf006/muraligm/software/miniconda3-frontier/bin/activate
+      conda activate /lustre/orion/stf006/proj-shared/muraligm/ML/SSL_ALPNet/SSL_ALPNet_frontier39
+    ```
+
+    * Run script:
+
+    `./examples/train_ssl_abdominal_mri.sh `
 
 ### Acknowledgement
 

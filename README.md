@@ -141,6 +141,9 @@ You are highly welcomed to use this pre-processing pipeline in your own work for
 ### 4. Running training and evaluation
 
 * run `./examples/train_ssl_abdominal_<mri/ct>.sh` and `./examples/test_ssl_abdominal_<mri/ct>.sh`
+  * *MGM Notes:*
+    * Run this on root dir, not `examples` dir.
+    * 
 
 ### Acknowledgement
 

@@ -1,8 +1,8 @@
 # Steps:
 
 1. Convert downloaded data (T2 fold) to nii files in 3D
-  1.1 Convert dicom images to nifti files
-  1.2 Convert ground truth with png format to nifti
+  * Convert dicom images to nifti files
+  * Convert ground truth with png format to nifti
 2. Pre-processing downloaded images: `image_normalize.py`
   * Crop, resize images, select label values
   ```
@@ -12,7 +12,7 @@
   ```
 3. Build class-slice indexing
 4. Pseudolabel generation
-5. Running training
+5. Run training
   * Time per iteration: 5 sec per 100 iteration -> 0.05 sec/iteration
   * Time per epoch: 50 sec/epoch (for 1000 iteration/epoch)
   * Total number of epochs from paper:

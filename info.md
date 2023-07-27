@@ -34,29 +34,17 @@
     2. `LABEL_SETS=1` and `EXCLU='[1,4]'` Model trained without liver & spleen
   * Results in `exp/myexp/mySSL_test_vfold0_CHAOST2_Superpix_sets_<LABEL_SET>_1shot/<run_name>/metrics.json`
 
+| Setting 2 (some labels not seen during training)         |               |              |               |           |
+|----------------------------------------------------------|---------------|--------------|---------------|-----------|
+|                                                          | Left kidney   | Right kidney | Spleen        | Liver     |
+| Ouyang et al. 2020                                       | 73.63         | 78.39        | 67.02         | 73.05     |
+| ORNL Model 1 (L&R kidnies   not seen during training)    | 73.751846     | 79.817945    | 70.653811     | 74.382686 |
+| ORNL Model 2 (Liver &   spleen not seen during training) |               |              |               |           |
 
-
-|----------------------------------------------------------|---------------|--------------|---------------|-----------|---|
-| Setting 2 (some labels not seen during training)         |               |              |               |           |   |
-|----------------------------------------------------------|---------------|--------------|---------------|-----------|---|
-|                                                          |        Lower abdomen         |        Upper abdomen      |   |
-|                                                          | Left kidney   | Right kidney | Spleen        | Liver     |   |
-| Ouyang et al. 2020                                       | 73.63         | 78.39        | 67.02         | 73.05     |   |
-| ORNL Model 1 (L&R kidnies   not seen during training)    | 73.751846     | 79.817945    | 70.653811     | 74.382686 |   |
-| ORNL Model 2 (Liver &   spleen not seen during training) |               |              |               |           |   |
-|                                                          |               |              |               |           |   |
-|                                                          |               |              |               |           |   |
-|                                                          |               |              |               |           |   |
-|----------------------------------------------------------|---------------|--------------|---------------|-----------|---|
-| Setting 1 (all   labels seen during training)            |               |              |               |           |   |
-|----------------------------------------------------------|---------------|--------------|---------------|-----------|---|
-|                                                          |        Lower abdomen         |        Upper abdomen      |   |
-|                                                          | Left kidney   | Right kidney | Spleen        | Liver     |   |
-| Ouyang et al. 2020                                       | 81.92         | 72.18        | 76.1          | 78.84     |   |
-| ORNL Model                                               | 81.685864     | 86.471372    | 66.35281      | 75.203577 |   |
-|                                                          |               |              |               |           |   |
-|                                                          |               |              |               |           |   |
-|                                                          |               |              |               |           |   |
----------------------------------------------------------------------------------------------------------------------------
+| Setting 1 (all   labels seen during training)            |               |              |               |           |
+|----------------------------------------------------------|---------------|--------------|---------------|-----------|
+|                                                          | Left kidney   | Right kidney | Spleen        | Liver     |
+| Ouyang et al. 2020                                       | 81.92         | 72.18        | 76.1          | 78.84     |
+| ORNL Model                                               | 81.685864     | 86.471372    | 66.35281      | 75.203577 |
 
 

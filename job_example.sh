@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH -A stf006
 #SBATCH -J test_SSL
-#SBATCH -o "testjob_%j.o"
+#SBATCH -o "testjob_%j"
 #SBATCH -N 1
 #SBATCH -p batch
 #SBATCH -q debug
-#SBATCH -t 1:00:00
+#SBATCH -t 2:00:00
 #SBATCH --export NONE
 
 unset SLURM_EXPORT_ENV
@@ -30,8 +30,8 @@ date
 echo "***************Trying without srun***************"
 ./examples/train_ssl_abdominal_mri.sh
 
-echo "***************Trying srun***************"
-OMP_NUM_THREADS=1 srun -u --gpus-per-task=1 --gpu-bind=closest -N1 -n1 -c1 ./examples/train_ssl_abdominal_mri.sh
+# echo "***************Trying srun***************"
+# OMP_NUM_THREADS=1 srun -u --gpus-per-task=1 --gpu-bind=closest -N1 -n1 -c1 ./examples/train_ssl_abdominal_mri.sh
 
 wait
 

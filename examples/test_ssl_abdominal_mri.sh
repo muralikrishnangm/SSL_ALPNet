@@ -13,12 +13,13 @@ ALL_EV=( 0) # 5-fold cross validation (0, 1, 2, 3, 4)
 ALL_SCALE=( "MIDDLE") # config of pseudolabels
 
 ### Use L/R kidney as testing classes
-LABEL_SETS=0 
+LABEL_SETS=0
 EXCLU='[2,3]' # setting 2: excluding kidneies in training set to test generalization capability even though they are unlabeled. Use [] for setting 1 by Roy et al.
+#   EXCLU='[]' # setting 2: excluding kidneies in training set to test generalization capability even though they are unlabeled. Use [] for setting 1 by Roy et al.
 
-### Use Liver and spleen as testing classes
-# LABEL_SETS=1 
-# EXCLU='[1,4]' 
+#   ### Use Liver and spleen as testing classes
+#   LABEL_SETS=1 
+#   EXCLU='[1,4]' 
 
 ###### Training configs (irrelavent in testing) ######
 NSTEP=100100
@@ -46,7 +47,7 @@ do
         mkdir $LOGDIR
     fi
 
-    RELOAD_PATH='please feed the path to the trained weights here' # path to the reloaded model
+    RELOAD_PATH='/lustre/orion/proj-shared/stf006/muraligm/ML/SSL_ALPNet/examples/myexperiments_MIDDLE_1/mySSL_train_CHAOST2_Superpix_lbgroup1_scale_MIDDLE_vfold0_CHAOST2_Superpix_sets_1_1shot/train_setting2_LivSpl/snapshots/100000.pth' #'please feed the path to the trained weights here' # path to the reloaded model
 
     python3 validation.py with \
     'modelname=dlfcn_res101' \

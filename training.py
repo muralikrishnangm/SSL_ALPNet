@@ -40,14 +40,24 @@ def main(_run, _config, _log):
     set_seed(_config['seed'])
     cudnn.enabled = True
     cudnn.benchmark = True
-    torch.cuda.set_device(device=_config['gpu_id'])
+    torch.cuda.set_device(device=_config['gpu_id'])      # devices) # _config['gpu_id'])
     torch.set_num_threads(1)
 
     _log.info('###### Create model ######')
     model = FewShotSeg(pretrained_path=None, cfg=_config['model'])
-
+    
     model = model.cuda()
     model.train()
+    
+    #    _log.info('###### Multi-GPU training ######')
+    #    print(f'torch all device: {torch.cuda.device_count()}')
+    #    print(f'torch current device: {torch.cuda.current_device()}')
+    #    devices = torch.device("cuda" if torch.cuda.is_available() else 'cpu')
+    #    # devices = [d for d in range(torch.cuda.device_count())]
+    #    # print(f'devices: {devices}')
+    #    model = nn.DataParallel(model)
+    #    model.to(devices)
+    #    model.train()
 
     _log.info('###### Load data ######')
     ### Training set
@@ -59,6 +69,8 @@ def main(_run, _config, _log):
         baseset_name = 'C0'
     elif data_name == 'CHAOST2_Superpix':
         baseset_name = 'CHAOST2'
+    elif data_name == 'AMIR_Superpix':
+        baseset_name = 'AMIR'
     else:
         raise ValueError(f'Dataset: {data_name} not found')
 

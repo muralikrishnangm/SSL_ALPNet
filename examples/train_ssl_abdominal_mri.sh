@@ -1,7 +1,7 @@
 #!/bin/bash
 # train a model to segment abdominal MRI (T2 fold of CHAOS challenge)
 GPUID1=0
-export CUDA_VISIBLE_DEVICES=$GPUID1
+export CUDA_VISIBLE_DEVICES=$GPUID1   # 0,1,2,3
 
 ####### Shared configs
 PROTO_GRID=8 # using 32 / 8 = 4, 4-by-4 prototype pooling window during training

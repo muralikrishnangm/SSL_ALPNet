@@ -22,7 +22,20 @@ DATASET_INFO = {
                 1: set([2, 3]), # lower_abdomen
                 },
             },
-
+    
+    "AMIR": {
+            'PSEU_LABEL_NAME': ["BGD", "SUPFG"],
+            'REAL_LABEL_NAME': ["BG", "PORES", "CEMPASTE", "DMICRO", "BMICRO"],
+            '_SEP': [0, 4, 8, 12, 16, 20],
+            'MODALITY': 'MR',
+            'LABEL_GROUP': {
+                'pa_all': set(range(1, 5)),
+                0: set([1, 4]), # pores and bright microstructures as testing classes
+                1: set([2, 3]), # cement paste and dark microstructures
+                2: set([3, 4]), # dark and bright microstructures
+                },
+            },
+    
     "SABS": {
             'PSEU_LABEL_NAME': ["BGD", "SUPFG"],
 

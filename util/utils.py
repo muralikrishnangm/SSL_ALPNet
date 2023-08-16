@@ -32,6 +32,13 @@ CLASS_LABELS = {
         0: set([1, 4]), # upper_abdomen, leaving kidneies as testing classes
         1: set([2, 3]), # lower_abdomen
     },
+    'AMIR': {
+        'pa_all': set(range(1, 5)),
+        0: set([1, 4]), # pores and bright microstructures as testing classes
+        1: set([2, 3]), # cement paste and dark microstructures
+        2: set([3, 4]), # dark and bright microstructures
+
+    },
 }
 
 def get_bbox(fg_mask, inst_mask):

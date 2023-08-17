@@ -144,6 +144,17 @@ These are old versions and PyTorch needs ROCM version. Follow these steps for in
 You are highly welcomed to use this pre-processing pipeline in your own work for evaluating few-shot medical image segmentation in future. Please consider citing our paper (as well as the original sources of data) if you find this pipeline useful. Thanks! 
 `
 
+**Amir's Data**
+
+1. Change filenames to the format `image_<image number>.nii.gz`. Use [this link](https://unix.stackexchange.com/a/316042):
+	```
+	# to replace 456 with 555
+ 	# first test with the following echo command
+ 	for f in *456*; do echo mv -i -- "$f" "${f//456/555}"; done
+    # then execute
+ 	for f in *456*; do mv -i -- "$f" "${f//456/555}"; done
+ 	```
+
 ### 3. Pseudolabel generation
 
 * run `./data/pseudolabel_gen.ipynb`. You might need to specify which dataset to use within the notebook.

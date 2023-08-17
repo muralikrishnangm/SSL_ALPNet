@@ -134,16 +134,6 @@ These are old versions and PyTorch needs ROCM version. Follow these steps for in
 
   * run `./data/SABS/resampling_and_roi.ipynb` 
 
-**Shared steps**
-
-3. Build class-slice indexing for setting up experiments
-
-  * run `./data/<CHAOST2/SABS>/class_slice_index_gen.ipynb`
-
-`
-You are highly welcomed to use this pre-processing pipeline in your own work for evaluating few-shot medical image segmentation in future. Please consider citing our paper (as well as the original sources of data) if you find this pipeline useful. Thanks! 
-`
-
 **Amir's Data**
 
 1. Change filenames to the format `image_<image number>.nii.gz`. Use [this link](https://unix.stackexchange.com/a/316042):
@@ -154,6 +144,18 @@ You are highly welcomed to use this pre-processing pipeline in your own work for
     # then execute
  	for f in *456*; do mv -i -- "$f" "${f//456/555}"; done
  	```
+
+**Shared steps**
+
+3. Build class-slice indexing for setting up experiments
+
+  * run `./data/<CHAOST2/SABS>/class_slice_index_gen.ipynb`
+
+**TODO:** Need labels for Amir's training data to create class-slice indexing
+
+`
+You are highly welcomed to use this pre-processing pipeline in your own work for evaluating few-shot medical image segmentation in future. Please consider citing our paper (as well as the original sources of data) if you find this pipeline useful. Thanks! 
+`
 
 ### 3. Pseudolabel generation
 

@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 # ## Generate superpixel-based pseudolabels
 # 
 # 
@@ -11,8 +8,6 @@
 # Input: normalized images
 # 
 # Output: pseulabel label candidates for all the images
-
-# In[1]:
 
 
 # get_ipython().run_line_magic('reset', '')
@@ -55,9 +50,6 @@ to01 = lambda x: (x - x.min()) / (x.max() - x.min())
 # ```
 # 
 
-# In[2]:
-
-
 DATASET_CONFIG = {'SABS':{
                     'img_bname': f'./SABS/sabs_CT_normalized/image_*.nii.gz',
                     'out_dir': './SABS/sabs_CT_normalized',
@@ -67,36 +59,24 @@ DATASET_CONFIG = {'SABS':{
                       'img_bname': f'./CHAOST2/chaos_MR_T2_normalized/image_*.nii.gz',
                       'out_dir': './CHAOST2/chaos_MR_T2_normalized',
                       'fg_thresh': 1e-4 + 50
+                    },
+                  'AMIR':{
+                      'img_bname': f'./AMIR/amir_MR_normalized/input_*.nii.gz',
+                      'out_dir': './AMIR/amir_MR_normalized',
+                      'fg_thresh': 1e-4 + 50
                     }
                  }
             
 
-DOMAIN = 'CHAOST2'
+DOMAIN = 'AMIR'
 img_bname = DATASET_CONFIG[DOMAIN]['img_bname']
 imgs = glob.glob(img_bname)
 out_dir = DATASET_CONFIG[DOMAIN]['out_dir']
 
+print(imgs)
 
-# In[3]:
-
-
-imgs
-
-
-# In[4]:
-
-
+# sort files
 imgs = sorted(imgs, key = lambda x: int(x.split('_')[-1].split('.nii.gz')[0]) )
-
-
-# In[5]:
-
-
-imgs
-
-
-# In[23]:
-
 
 MODE = 'MIDDLE' # minimum size of pesudolabels. 'MIDDLE' is the default setting
 

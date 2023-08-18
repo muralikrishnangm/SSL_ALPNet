@@ -112,12 +112,12 @@ def cfg():
             },
         'CHAOST2':{'data_dir': "./data/CHAOST2/chaos_MR_T2_normalized/"
             },
-        'AMIR':{'data_dir': "./data/AMIR/amir_MR_T2_normalized/"
+        'AMIR':{'data_dir': "./data/AMIR/amir_MR_normalized/"
             },
         'SABS_Superpix':{'data_dir': "./data/SABS/sabs_CT_normalized"},
         'C0_Superpix':{'data_dir': "feed your dataset path here"},
         'CHAOST2_Superpix':{'data_dir': "./data/CHAOST2/chaos_MR_T2_normalized/"},
-        'AMIR_Superpix':{'data_dir': "./data/AMIR/amir_MR_T2_normalized/"},
+        'AMIR_Superpix':{'data_dir': "./data/AMIR/amir_MR_normalized/"},
         }
 
 

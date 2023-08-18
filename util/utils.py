@@ -90,7 +90,7 @@ def compose_wt_simple(is_wce, data_name):
     Weights for cross-entropy loss
     """
     if is_wce:
-        if data_name in ['SABS', 'SABS_Superpix', 'C0', 'C0_Superpix', 'CHAOST2', 'CHAOST2_Superpix']:
+        if data_name in ['SABS', 'SABS_Superpix', 'C0', 'C0_Superpix', 'CHAOST2', 'CHAOST2_Superpix', 'AMIR', 'AMIR_Superpix']:
             return torch.FloatTensor([0.05, 1.0]).cuda()
         else:
             raise NotImplementedError

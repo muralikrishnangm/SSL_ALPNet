@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 # ## Generate class-slice indexing table for experiments
 # 
 # 
@@ -11,9 +8,6 @@
 # Input: pre-processed images and their ground-truth labels
 # 
 # Output: a `json` file for class-slice indexing
-
-# In[2]:
-
 
 # get_ipython().run_line_magic('reset', '')
 # get_ipython().run_line_magic('load_ext', 'autoreload')
@@ -28,14 +22,8 @@ sys.path.insert(0, '../../dataloaders/')
 import niftiio as nio
 
 
-# In[4]:
-
-
 IMG_BNAME="./chaos_MR_T2_normalized/image_*.nii.gz"
 SEG_BNAME="./chaos_MR_T2_normalized/label_*.nii.gz"
-
-
-# In[5]:
 
 
 imgs = glob.glob(IMG_BNAME)
@@ -43,25 +31,12 @@ segs = glob.glob(SEG_BNAME)
 imgs = [ fid for fid in sorted(imgs, key = lambda x: int(x.split("_")[-1].split(".nii.gz")[0])  ) ]
 segs = [ fid for fid in sorted(segs, key = lambda x: int(x.split("_")[-1].split(".nii.gz")[0])  ) ]
 
+print(f'images: {imgs}')
 
-# In[6]:
-
-
-imgs
-
-
-# In[7]:
-
-
-segs
-
-
-# In[13]:
-
+print(f'labels: {segs}')
 
 classmap = {}
 LABEL_NAME = ["BG", "LIVER", "RK", "LK", "SPLEEN"]     
-
 
 MIN_TP = 1 # minimum number of positive label pixels to be recorded. Use >100 when training with manual annotations for more stable training
 
@@ -82,23 +57,10 @@ for seg in segs:
                 if np.sum( lb_vol[slc, ...]) >= MIN_TP:
                     classmap[LABEL_NAME[cls]][str(pid)].append(slc)
     print(f'pid {str(pid)} finished!')
-    
+
 with open(fid, 'w') as fopen:
     json.dump(classmap, fopen)
     fopen.close()  
     
-
-
-# In[12]:
-
-
-with open(fid, 'w') as fopen:
-    json.dump(classmap, fopen)
-    fopen.close()
-
-
-# In[ ]:
-
-
 
 

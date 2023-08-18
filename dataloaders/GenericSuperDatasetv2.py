@@ -83,7 +83,7 @@ class SuperpixelDataset(BaseDataset):
             raise Exception
         self.actual_dataset = self.read_dataset()
         self.size = len(self.actual_dataset)
-        self.overall_slice_by_cls = self.read_classfiles()
+        self.overall_slice_by_cls = self.read_classfiles()  # get file containing the info of all sclices for each class
 
         print("###### Initial scans loaded: ######")
         print(self.pid_curr_load)

@@ -71,6 +71,8 @@ def main(_run, _config, _log):
         baseset_name = 'CHAOST2'
     elif data_name == 'AMIR_Superpix':
         baseset_name = 'AMIR'
+        import sys
+        sys.setrecursionlimit(1500)
     else:
         raise ValueError(f'Dataset: {data_name} not found')
 

@@ -152,6 +152,8 @@ These are old versions and PyTorch needs ROCM version. Follow these steps for in
   * run `./data/<CHAOST2/SABS>/class_slice_index_gen.ipynb`
 
 **TODO:** Need labels for Amir's training data to create class-slice indexing
+	* This file contains the info of all slices for each class - not pixel-by-pixel info of each class
+	* Need this info to exclude classes during training - within the pipeline
 
 `
 You are highly welcomed to use this pre-processing pipeline in your own work for evaluating few-shot medical image segmentation in future. Please consider citing our paper (as well as the original sources of data) if you find this pipeline useful. Thanks! 
@@ -160,6 +162,10 @@ You are highly welcomed to use this pre-processing pipeline in your own work for
 ### 3. Pseudolabel generation
 
 * run `./data/pseudolabel_gen.ipynb`. You might need to specify which dataset to use within the notebook.
+
+**TODO:** The data format for CHAOST2 and AMIR is different.
+ 	* The dimensions, spacing, origin, and direction are different from CHAOST2 dataset
+	* See [`pseudolabel_gen.py`](pseudolabel_gen.py) for full details.
 
 ### 4. Running training and evaluation
 
@@ -299,6 +305,9 @@ Sample output from testing script:
     INFO - mySSL - Completed after 0:00:10
     ===================================
     ```
+
+**TODO:** Training running into recursion error - too many times dataloader is called during the loop of mini-batch.
+	* Is this related to the data format? See [`pseudolabel_gen.py`](pseudolabel_gen.py).
 
 ### Acknowledgement
 

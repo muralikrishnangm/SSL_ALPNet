@@ -83,7 +83,7 @@ class SuperpixelDataset(BaseDataset):
             raise Exception
         self.actual_dataset = self.read_dataset()
         self.size = len(self.actual_dataset)
-        self.overall_slice_by_cls = self.read_classfiles()  # get file containing the info of all sclices for each class
+        # self.overall_slice_by_cls = self.read_classfiles()  # get file containing the info of all sclices for each class
 
         print("###### Initial scans loaded: ######")
         print(self.pid_curr_load)
@@ -250,9 +250,9 @@ class SuperpixelDataset(BaseDataset):
         image_t = curr_dict["img"]
         label_raw = curr_dict["lb"]
 
-        for _ex_cls in self.exclude_lbs:
-            if curr_dict["z_id"] in self.tp1_cls_map[self.real_label_name[_ex_cls]][curr_dict["scan_id"]]: # if using setting 1, this slice need to be excluded since it contains label which is supposed to be unseen
-                return self.__getitem__(torch.randint(low = 0, high = self.__len__() - 1, size = (1,)))
+        # for _ex_cls in self.exclude_lbs:
+        #     if curr_dict["z_id"] in self.tp1_cls_map[self.real_label_name[_ex_cls]][curr_dict["scan_id"]]: # if using setting 1, this slice need to be excluded since it contains label which is supposed to be unseen
+        #         return self.__getitem__(torch.randint(low = 0, high = self.__len__() - 1, size = (1,)))
 
         label_t = self.supcls_pick_binarize(label_raw, sup_max_cls)
 

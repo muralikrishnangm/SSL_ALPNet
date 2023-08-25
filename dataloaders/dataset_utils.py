@@ -26,7 +26,7 @@ DATASET_INFO = {
     "AMIR": {
             'PSEU_LABEL_NAME': ["BGD", "SUPFG"],
             'REAL_LABEL_NAME': ["BG", "PORES", "CEMPASTE", "DMICRO", "BMICRO"],
-            '_SEP': [0, 4, 8, 12, 16, 20],
+            '_SEP': [0, 35, 71, 107, 143, 179],   # '_SEP': [0, 4, 8, 12, 16, 20],
             'MODALITY': 'MR',
             'LABEL_GROUP': {
                 'pa_all': set(range(1, 5)),

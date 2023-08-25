@@ -32,12 +32,6 @@ import os
 
 to01 = lambda x: (x - x.min()) / (x.max() - x.min())
 
-# TODO:
-# Check the size/format of the images of Amir and CHAOS data
-# # CHAOST2: [256 x 256 x C1]; AMIR: [C2 x 256 x 256]
-# # Spacing, Origin, Directions are all different
-# See what this function does
-
 # **Summary**
 # 
 # a. Generate a mask of the patient to avoid pseudolabels of empty regions in the background
@@ -65,14 +59,15 @@ DATASET_CONFIG = {'SABS':{
                       'fg_thresh': 1e-4 + 50
                     },
                   'AMIR':{
-                      'img_bname': f'./AMIR/amir_MR_normalized/image_*.nii.gz',
+                      'img_bname': f'./AMIR/amir_original_image/image_*.nii.gz',   # f'./AMIR/amir_MR_normalized/image_*.nii.gz',
+                      'lbl_bname': f'./AMIR/amir_original_image/label_*.nii.gz',
                       'out_dir': './AMIR/amir_MR_normalized',
                       'fg_thresh': 1e-4 + 50   # TODO: Should we adjust this?
                     }
                  }
             
 
-DOMAIN = 'CHAOST2'
+DOMAIN = 'AMIR'
 img_bname = DATASET_CONFIG[DOMAIN]['img_bname']
 imgs = glob.glob(img_bname)
 out_dir = DATASET_CONFIG[DOMAIN]['out_dir']
@@ -178,6 +173,25 @@ def strip_(img, lb):
         raise Exception
 
 
+if DOMAIN == 'AMIR':
+  # reshape and copy labels to MR folder from the original folder
+  lbl_bname = DATASET_CONFIG[DOMAIN]['lbl_bname']
+  lbls = glob.glob(lbl_bname)
+  for lbl_fid in lbls:
+    idx_lbl = os.path.basename(lbl_fid).split("_")[-1].split(".nii.gz")[0]
+    lbl_obj = sitk.ReadImage(lbl_fid)
+    temp_img = sitk.GetArrayFromImage(lbl_obj)
+    # print(f'Data label size: {temp_img.shape}')
+    temp_img = np.transpose(temp_img, (2, 1, 0))
+    # print(f'reshaped label size: {temp_img.shape}')
+    lbl_obj = sitk.GetImageFromArray(temp_img)
+    # print(f'Reshaped label for AMIR data: {lbl_obj}')
+    # re-write label data to reshape
+    lbl_fid = os.path.join(out_dir, f'label_{idx_lbl}.nii.gz')
+    sitk.WriteImage(lbl_obj, lbl_fid)
+    # raise Exception
+
+
 
 # Generate pseudolabels for every image and save them
 for img_fid in imgs:
@@ -186,24 +200,33 @@ for img_fid in imgs:
     idx = os.path.basename(img_fid).split("_")[-1].split(".nii.gz")[0]
     im_obj = sitk.ReadImage(img_fid)
 
-    print(f'im_obj: {im_obj}')
-
+   #  print(f'im_obj: {im_obj}')
+    if DOMAIN == 'AMIR':
+      # reshape and copy images to MR folder from the original folder
+      # reshape image object from S x 256 x 256 -> 256 x 256 x S
+      temp_img = sitk.GetArrayFromImage(im_obj)
+      # print(f'Data image size: {temp_img.shape}')
+      temp_img = np.transpose(temp_img, (2, 1, 0))
+      # print(f'reshaped image size: {temp_img.shape}')
+      im_obj = sitk.GetImageFromArray(temp_img)
+      # print(f'Reshaped image for AMIR data: {im_obj}')
+      # re-write image data to reshape
+      img_fid = os.path.join(out_dir, f'image_{idx}.nii.gz')
+      sitk.WriteImage(im_obj, img_fid)
+      
     out_fg, out_seg = superpix_wrapper(sitk.GetArrayFromImage(im_obj), fg_thresh = DATASET_CONFIG[DOMAIN]['fg_thresh'] )
-    print(f'out_fg: {out_fg}')
+    # print(f'out_fg: {out_fg}')
     out_fg_o = sitk.GetImageFromArray(out_fg ) 
     out_seg_o = sitk.GetImageFromArray(out_seg )
-    print(f'Before copy - out_fg_o: {out_fg_o}; out_seg_o: {out_seg_o}')
+    # print(f'Before copy - out_fg_o: {out_fg_o}; out_seg_o: {out_seg_o}')
     out_fg_o = copy_info(im_obj, out_fg_o)
     out_seg_o = copy_info(im_obj, out_seg_o)
-    print(f'After copy - out_fg_o: {out_fg_o}; out_seg_o: {out_seg_o}')
+    # print(f'After copy - out_fg_o: {out_fg_o}; out_seg_o: {out_seg_o}')
     seg_fid = os.path.join(out_dir, f'superpix-{MODE}_{idx}.nii.gz')
     msk_fid = os.path.join(out_dir, f'fgmask_{idx}.nii.gz')
-    print(seg_fid)
+    # print(seg_fid)
     sitk.WriteImage(out_fg_o, msk_fid)
     sitk.WriteImage(out_seg_o, seg_fid)
     print(f'image with id {idx} has finished')
-    raise Exception
-
-
-
+    # raise Exception
 

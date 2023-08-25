@@ -40,7 +40,7 @@ def cfg():
 
     ### Training
     n_steps = 100100
-    batch_size = 1
+    batch_size = 1 # TODO: Why batchsize > 1 give "Faulty batch" error? Will it go after first epoch?
     lr_milestones = [ (ii + 1) * 1000 for ii in range(n_steps // 1000 - 1)]
     lr_step_gamma = 0.95
     ignore_label = 255

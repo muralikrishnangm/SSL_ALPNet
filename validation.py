@@ -63,6 +63,9 @@ def main(_run, _config, _log):
     elif data_name == 'CHAOST2_Superpix':
         baseset_name = 'CHAOST2'
         max_label = 4
+    elif data_name == 'AMIR_Superpix':
+        baseset_name = 'AMIR'
+        max_label = 4
     else:
         raise ValueError(f'Dataset: {data_name} not found')
 

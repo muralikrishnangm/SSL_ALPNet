@@ -107,6 +107,8 @@ def main(_run, _config, _log):
         pin_memory=True,
         drop_last=True
     )
+    _log.info('###### Train datalaoader ######')
+    _log.info(f'Batch size: {_config["batch_size"]}, Number of mini-batches: {len(trainloader)}')
 
     _log.info('###### Set optimizer ######')
     if _config['optim_type'] == 'sgd':

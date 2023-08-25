@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH -A stf006
-#SBATCH -J test_SSL
+#SBATCH -J SSLpseudo
 #SBATCH -o "testjob_%j"
 #SBATCH -N 1
 #SBATCH -p batch
-#SBATCH -q debug
+# #SBATCH -q debug
 #SBATCH -t 2:00:00
 #SBATCH --export NONE
 
@@ -28,7 +28,10 @@ echo "===============STARTING TIME==============="
 date
 
 echo "***************Trying without srun***************"
-./examples/train_ssl_abdominal_mri.sh
+./examples/train_ssl_amir_mri.sh
+
+# cd data
+# python pseudolabel_gen.py
 
 # echo "***************Trying srun***************"
 # OMP_NUM_THREADS=1 srun -u --gpus-per-task=1 --gpu-bind=closest -N1 -n1 -c1 ./examples/train_ssl_abdominal_mri.sh
